@@ -1,0 +1,222 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin: 10px 20px;
+}
+
+#catalogClothing {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 20px;
+  gap: 20px;
+}
+
+.cardClothing {
+  display: flex;
+  justify-content: center;
+}
+
+.cardClothingContent {
+  width: 300px;
+  border: 2px solid #ffefd8;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imgClothing {
+  width: 270px;
+  height: 360px;
+  border-radius: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titleClothing {
+  margin-top: 10px;
+}
+
+.availableColorsClothing {
+  margin-top: 3px;
+  font-size: 15px;
+  color: #808080;
+}
+
+.btnsCardClothing {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btnCardClothing {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btnCardClothing:hover {
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.btnCardClothing:active {
+  box-shadow: 4px 4px 2px inset rgba(0, 0, 0, 0.1);
+}
+
+.btnCardClothing:nth-child(n) {
+  background: #fed9c9;
+}
+
+.btnCardClothing:nth-child(2n) {
+  background: #fec994;
+}
+
+.quickView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.quickViewContent {
+  border: 2px solid #ffefd8;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.quickViewContent__exitSpace {
+  display: flex;
+  justify-content: end;
+}
+
+.quickViewContent__exitSpace__exitButton {
+  border: 2px solid #ffefd8;
+  border-radius: 50%;
+  background-color: #ebebeb;
+  font-weight: 600;
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+.quickViewContent__exitSpace__exitButton:hover {
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.quickViewContent__exitSpace__exitButton:active {
+  box-shadow: 4px 4px 2px inset rgba(0, 0, 0, 0.1);
+  background-color: #dedede;
+}
+
+.quickViewContent__clothingInfo {
+  display: grid;
+  grid-template-columns: 240px 280px;
+  height: 300px;
+  gap: 15px;
+  padding: 3px 15px 15px 15px;
+}
+
+.quickViewContent__clothingInfo__img {
+  border-radius: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.quickViewContent__clothingInfo__title {
+  margin-bottom: 5px;
+}
+
+.quickViewContent__clothingInfo__price {
+  margin-bottom: 10px;
+}
+
+.quickViewContent__clothingInfo__colorsInfo {
+  margin-bottom: 3px;
+  font-size: 15px;
+}
+
+.quickViewContent__clothingInfo__colors {
+  display: grid;
+  grid-template-columns: repeat(5, 20px);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.quickViewContent__clothingInfo__colors__color {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fed9c9;
+  transition: all 0.3s ease;
+}
+.quickViewContent__clothingInfo__colors__color:hover {
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.quickViewContent__clothingInfo__colors__color:active {
+  box-shadow: 4px 4px 4px inset rgba(0, 0, 0, 0.2);
+}
+
+.quickViewContent__clothingInfo__colors__activeColor {
+  box-shadow: 4px 4px 4px inset rgba(0, 0, 0, 0.2);
+}
+
+.quickViewContent__clothingInfo__sides {
+  display: grid;
+  grid-template-columns: repeat(2, 58px);
+  gap: 4px;
+}
+
+.quickViewContent__clothingInfo__sides__side {
+  border: 2px solid #fed9c9;
+  border-radius: 10px;
+  padding: 5px 0px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+.quickViewContent__clothingInfo__sides__side:nth-child(n):hover {
+  box-shadow: -4px 4px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.quickViewContent__clothingInfo__sides__side:nth-child(2n):hover {
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.quickViewContent__clothingInfo__sides__side:nth-child(n):active {
+  box-shadow: 4px -4px 2px inset rgba(0, 0, 0, 0.2);
+}
+.quickViewContent__clothingInfo__sides__side:nth-child(2n):active {
+  box-shadow: -4px -4px 2px inset rgba(0, 0, 0, 0.2);
+}
+
+#front {
+  box-shadow: 4px -4px 2px inset rgba(0, 0, 0, 0.2);
+}
+
+#back {
+  box-shadow: -4px -4px 2px inset rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=styles.css.map */
