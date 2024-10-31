@@ -1,5 +1,7 @@
 import { shirts } from "./shirts.js";
 
+localStorage.setItem("actualClothe", null);
+
 const catalogClothing = document.getElementById("catalogClothing");
 
 function createCardClothing(shirt) {
@@ -36,6 +38,10 @@ function createCardClothing(shirt) {
   const btnCardClothing2 = document.createElement("button");
   btnCardClothing2.className = "btnCardClothing";
   btnCardClothing2.textContent = `See Page`;
+  btnCardClothing2.onclick = () => {
+    localStorage.setItem("actualClothe", JSON.stringify(shirt));
+    window.location.href = "details.html";
+  };
 
   btnsCardClothing.appendChild(btnCardClothing1);
   btnsCardClothing.appendChild(btnCardClothing2);

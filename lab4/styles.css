@@ -136,7 +136,16 @@ h1 {
   padding: 3px 15px 15px 15px;
 }
 
-.quickViewContent__clothingInfo__img {
+.actualClothe__info {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 15px;
+  padding: 3px 15px 15px 15px;
+  height: 400px;
+}
+
+.quickViewContent__clothingInfo__img,
+.actualClothe__img {
   border-radius: 10px;
   background-position: center;
   background-repeat: no-repeat;
@@ -147,48 +156,63 @@ h1 {
   margin-bottom: 5px;
 }
 
-.quickViewContent__clothingInfo__price {
+.quickViewContent__clothingInfo__price,
+.actualClothe__price {
   margin-bottom: 10px;
 }
 
-.quickViewContent__clothingInfo__colorsInfo {
+.quickViewContent__clothingInfo__colorsInfo,
+.actualClothe__descriptionText,
+.actualClothe__colorsText,
+.actualClothe__sidesText {
   margin-bottom: 3px;
   font-size: 15px;
 }
 
-.quickViewContent__clothingInfo__colors {
+.actualClothe__description {
+  margin-bottom: 15px;
+}
+
+.quickViewContent__clothingInfo__colors,
+.actualClothe__colors {
   display: grid;
   grid-template-columns: repeat(5, 20px);
   gap: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.quickViewContent__clothingInfo__colors__color {
+.quickViewContent__clothingInfo__colors__color,
+.actualClothe__colors__color {
   border-radius: 50%;
   width: 20px;
   height: 20px;
   border: 1px solid #fed9c9;
   transition: all 0.3s ease;
 }
-.quickViewContent__clothingInfo__colors__color:hover {
+.quickViewContent__clothingInfo__colors__color:hover,
+.actualClothe__colors__color:hover {
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.quickViewContent__clothingInfo__colors__color:active {
+.quickViewContent__clothingInfo__colors__color:active,
+.actualClothe__colors__color:active {
   box-shadow: 4px 4px 4px inset rgba(0, 0, 0, 0.2);
 }
 
-.quickViewContent__clothingInfo__colors__activeColor {
+.quickViewContent__clothingInfo__colors__activeColor,
+.actualClothe__colors__activeColor {
   box-shadow: 4px 4px 4px inset rgba(0, 0, 0, 0.2);
 }
 
-.quickViewContent__clothingInfo__sides {
+.quickViewContent__clothingInfo__sides,
+.actualClothe__sides {
   display: grid;
   grid-template-columns: repeat(2, 58px);
   gap: 4px;
 }
 
-.quickViewContent__clothingInfo__sides__side {
+.quickViewContent__clothingInfo__sides__side,
+.actualClothe__sides__side {
   border: 2px solid #fed9c9;
   border-radius: 10px;
   padding: 5px 0px;
@@ -196,18 +220,22 @@ h1 {
   transition: all 0.3s ease;
   background-color: white;
 }
-.quickViewContent__clothingInfo__sides__side:nth-child(n):hover {
+.quickViewContent__clothingInfo__sides__side:nth-child(n):hover,
+.actualClothe__sides__side:nth-child(n):hover {
   box-shadow: -4px 4px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.quickViewContent__clothingInfo__sides__side:nth-child(2n):hover {
+.quickViewContent__clothingInfo__sides__side:nth-child(2n):hover,
+.actualClothe__sides__side:nth-child(2n):hover {
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.quickViewContent__clothingInfo__sides__side:nth-child(n):active {
+.quickViewContent__clothingInfo__sides__side:nth-child(n):active,
+.actualClothe__sides__side:nth-child(n):active {
   box-shadow: 4px -4px 2px inset rgba(0, 0, 0, 0.2);
 }
-.quickViewContent__clothingInfo__sides__side:nth-child(2n):active {
+.quickViewContent__clothingInfo__sides__side:nth-child(2n):active,
+.actualClothe__sides__side:nth-child(2n):active {
   box-shadow: -4px -4px 2px inset rgba(0, 0, 0, 0.2);
 }
 

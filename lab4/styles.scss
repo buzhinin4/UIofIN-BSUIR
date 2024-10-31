@@ -170,7 +170,7 @@ h1 {
 }
 
 .quickViewContent__clothingInfo__price,
-.actualClothe_price {
+.actualClothe__price {
   margin-bottom: 10px;
 }
 
@@ -182,12 +182,16 @@ h1 {
   font-size: 15px;
 }
 
+.actualClothe__description {
+  margin-bottom: 15px;
+}
+
 .quickViewContent__clothingInfo__colors,
 .actualClothe__colors {
   display: grid;
   grid-template-columns: repeat(5, 20px);
   gap: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .quickViewContent__clothingInfo__colors__color,
