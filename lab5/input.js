@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentElement = e.target;
       startTop = currentElement.offsetTop;
       startLeft = currentElement.offsetLeft;
+      currentElement.style.backgroundColor = "blue";
 
       document.addEventListener("mousemove", (cursor) =>
         drag(cursor, isDrag, currentElement)
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentElement = e.target;
       startTop = currentElement.offsetTop;
       startLeft = currentElement.offsetLeft;
+      currentElement.style.backgroundColor = "blue"; //вопрос со сменой цвета
 
       document.addEventListener("mousemove", (cursor) =>
         drag(cursor, isDrag, currentElement)
@@ -70,20 +72,20 @@ function drag(e, isDrag, currentElement) {
 
 function drop(isDrag, currentElement) {
   if (isDrag) {
+    currentElement.style.backgroundColor = "red";
     currentElement = null;
     isDrag = false;
-    return [isDrag, currentElement];
   }
   return [isDrag, currentElement];
 }
 
 function drop(startTop, startLeft, isDrag, currentElement) {
   if (isDrag) {
+    currentElement.style.backgroundColor = "red";
     currentElement.style.top = startTop + "px";
     currentElement.style.left = startLeft + "px";
     currentElement = null;
     isDrag = false;
-    return [isDrag, currentElement];
   }
   return [isDrag, currentElement];
 }
