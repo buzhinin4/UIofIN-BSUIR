@@ -242,7 +242,6 @@ h1 {
     box-shadow: 4px 4px 2px rgba($color: #000000, $alpha: 0.2);
     cursor: pointer;
   }
-
   &:nth-child(n):active {
     box-shadow: 4px -4px 2px inset rgba($color: #000000, $alpha: 0.2);
   }

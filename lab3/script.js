@@ -22,8 +22,8 @@ function createCardClothing(shirt) {
   const availableColorsClothing = document.createElement("p");
   availableColorsClothing.className = "availableColorsClothing";
   availableColorsClothing.textContent = `Available in ${
-    Object.keys(shirt.colors).length
-  } colors`;
+    Object.keys(shirt.colors).length==1? ` 1 color` : `${Object.keys(shirt.colors).length} colors`
+  }`;
 
   const btnsCardClothing = document.createElement("div");
   btnsCardClothing.className = "btnsCardClothing";
