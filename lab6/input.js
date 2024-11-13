@@ -26,13 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
       startLeft = currentElement.offsetLeft;
       startTouchY = touchY = start.touches[0].clientY;
       startTouchX = touchX = start.touches[0].clientX;
-      startTouchY2 = touchY2 = start.touches[1]
-        ? start.touches[1].clientY
+      // console.log("im start");
+    });
+
+    document.addEventListener("touchstart", (start) => {
+      startTouchY2 = touchY2 = start.touches[0]
+        ? start.touches[0].clientY
         : null;
-      startTouchX2 = touchX2 = start.touches[1]
-        ? start.touches[1].clientY
+      startTouchX2 = touchX2 = start.touches[0]
+        ? start.touches[0].clientY
         : null;
-      console.log("im start");
+      // console.log("im second start");
     });
 
     document.addEventListener("touchmove", (move) => {
@@ -42,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("im move");
 
       if (touchY2 && touchX2) {
-        touchY2 = move.touches[0].clientY;
-        touchX2 = move.touches[0].clientX;
+        touchY2 = move.touches[1].clientY;
+        touchX2 = move.touches[1].clientX;
         resize(
           touchY,
           touchX,
