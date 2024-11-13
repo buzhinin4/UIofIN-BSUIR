@@ -2,68 +2,96 @@ const targetElements = document.getElementsByClassName("target");
 const targetArray = Array.from(targetElements);
 
 document.addEventListener("DOMContentLoaded", () => {
-  let currentElement = null;
+  let currentElement;
   let startTop;
   let startLeft;
-  let isDrag = false;
+  let isDrag;
+  let startTouchY;
+  let touchY;
+  let startTouchX;
+  let touchX;
+  let startTouchY2;
+  let touchY2;
+  let startTouchX2;
+  let touchX2;
+  let minWidth = 50;
+  let minHeight = 50;
+  let isFollow;
 
   targetArray.forEach((element) => {
-    element.addEventListener("touchstart", (e) => {
-      element.addEventListener("touchstart", (e1) => {
-        if (e.clientX == e1.clientX && e.clientY == e1.clientY) {
-          isDrag = true;
-          currentElement = e.target;
-          startTop = currentElement.offsetTop;
-          startLeft = currentElement.offsetLeft;
+    element.addEventListener("touchstart", (start) => {
+      isDrag = true;
+      currentElement = start.target;
+      startTop = currentElement.offsetTop;
+      startLeft = currentElement.offsetLeft;
+      startTouchY = touchY = start.touches[0].clientY;
+      startTouchX = touchX = start.touches[0].clientX;
+      startTouchY2 = touchY2 = start.touches[1]
+        ? start.touches[1].clientY
+        : null;
+      startTouchX2 = touchX2 = start.touches[1]
+        ? start.touches[1].clientY
+        : null;
+      console.log("im start");
+    });
 
-          document.addEventListener("touchmove", (cursor) =>
-            drag(cursor, isDrag, currentElement)
-          );
+    document.addEventListener("touchmove", (move) => {
+      touchY = move.touches[0].clientY;
+      touchX = move.touches[0].clientX;
 
-          document.addEventListener(
-            "mouseup",
-            () => ([isDrag, currentElement] = drop(isDrag, currentElement))
-          );
+      console.log("im move");
 
-          document.addEventListener("touchstart", (touchstart1) => {
-            document.addEventListener("touchstart", (touchstart2) => {
-              document.addEventListener("touchmove", (cursor) =>
-                resize(
-                  touchstart1.clientX,
-                  touchstart1.clientY,
-                  cursor.clientX,
-                  cursor.clientY,
-                  isDrag,
-                  currentElement,
-                  50,
-                  50
-                )
-              );
-              document.addEventListener("touchend", (touchend) => {
-                if (
-                  touchstart2.clientX == touchend.clientX &&
-                  touchstart2.clientY == touchend.clientY
-                ) {
-                  [isDrag, currentElement] = drop(
-                    startTop,
-                    startLeft,
-                    isDrag,
-                    currentElement
-                  );
-                }
-              });
-            });
-          });
+      if (touchY2 && touchX2) {
+        touchY2 = move.touches[0].clientY;
+        touchX2 = move.touches[0].clientX;
+        resize(
+          touchY,
+          touchX,
+          touchY2,
+          touchX2,
+          minHeight,
+          minWidth,
+          isFollow || isDrag,
+          currentElement
+        );
+      } else {
+        console.log("im drag");
+        drag(touchY, touchX, isFollow || isDrag, currentElement);
+      }
+    });
+
+    document.addEventListener("touchend", () => {
+      console.log("im end");
+      if (!(touchY2 && touchX2)) {
+        if (startTouchY === touchY && startTouchX === touchX) {
+          if (isFollow) {
+            [isFollow, currentElement] = drop(isFollow, currentElement);
+            console.log("im end follow");
+          } else {
+            isFollow = true;
+            console.log("im start follow");
+          }
+        } else if (!isFollow) {
+          console.log("im drop");
+          [isDrag, currentElement] = drop(isDrag, currentElement);
         }
-      });
+
+        startTouchY = null;
+        startTouchX = null;
+      } else if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
+        drop(startTop, startLeft, isFollow || isDrag, currentElement);
+        startTouchY2 = startTouchX2 = touchY2 = touchX2 = null;
+      } else {
+        startTouchY2 = startTouchX2 = touchY2 = touchX2 = null;
+      }
     });
   });
 });
 
-function drag(e, isDrag, currentElement) {
+function drag(touchY, touchX, isDrag, currentElement) {
   if (currentElement && isDrag) {
-    currentElement.style.top = e.clientY + "px";
-    currentElement.style.left = e.clientX + "px";
+    currentElement.style.top = touchY + "px";
+    currentElement.style.left = touchX + "px";
   }
 }
 
@@ -85,24 +113,24 @@ function drop(startTop, startLeft, isDrag, currentElement) {
   return [isDrag, currentElement];
 }
 
-function resizing(
-  firstTouchX,
-  firstTouchY,
-  secondTouchX,
-  secondTouchY,
-  isDrag,
-  currentElement,
+function resize(
+  touchY,
+  touchX,
+  touchY2,
+  touchX2,
+  minHeight,
   minWidth,
-  minHeight
+  isDrag,
+  currentElement
 ) {
   if (isDrag) {
-    currentElement.style.width =
-      (Math.abs(firstTouchX - secondTouchX) > minWidth
-        ? Math.abs(firstTouchX - secondTouchX)
-        : minWidth) + "px";
     currentElement.style.height =
-      (Math.abs(firstTouchY - secondTouchY) > minHeight
-        ? Math.abs(firstTouchY - secondTouchY)
-        : minHeight) + "px";
+      Math.abs(touchY - touchY2) > minHeight
+        ? Math.abs(touchY - touchY2)
+        : minHeight + "px";
+    currentElement.style.width =
+      Math.abs(touchX - touchX2) > minWidth
+        ? Math.abs(touchX - touchX2)
+        : minWidth + "px";
   }
 }
