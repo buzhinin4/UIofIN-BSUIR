@@ -26,17 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
       startLeft = currentElement.offsetLeft;
       startTouchY = touchY = start.touches[0].clientY;
       startTouchX = touchX = start.touches[0].clientX;
-      // console.log("im start");
+      console.log("im start");
     });
 
     document.addEventListener("touchstart", (start) => {
-      startTouchY2 = touchY2 = start.touches[0]
-        ? start.touches[0].clientY
-        : null;
-      startTouchX2 = touchX2 = start.touches[0]
-        ? start.touches[0].clientY
-        : null;
-      // console.log("im second start");
+      if (touchY && touchX) {
+        console.log("im second start");
+        startTouchY2 = touchY2 = start.touches[0]
+          ? start.touches[0].clientY
+          : null;
+        startTouchX2 = touchX2 = start.touches[0]
+          ? start.touches[0].clientY
+          : null;
+      }
     });
 
     document.addEventListener("touchmove", (move) => {
@@ -80,8 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
           [isDrag, currentElement] = drop(isDrag, currentElement);
         }
 
-        startTouchY = null;
-        startTouchX = null;
+        startTouchY = startTouchX = touchY = touchX = null;
+        startTouchY = startTouchX = touchY = touchX = null;
+        startTouchY = startTouchX2 = touchY2 = touchX2 = null;
       } else if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
         drop(startTop, startLeft, isFollow || isDrag, currentElement);
         startTouchY2 = startTouchX2 = touchY2 = touchX2 = null;

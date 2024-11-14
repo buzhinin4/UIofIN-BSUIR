@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       document.addEventListener(
         "mouseup",
-        () => ([isDrag, currentElement] = drop(isDrag, currentElement))
+        () => ([isDrag, currentElement] = dropi(isDrag, currentElement))
       );
       document.addEventListener("keydown", (activeKey) => {
         if (activeKey.key === "Escape") {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         drag(cursor, isDrag, currentElement)
       );
       document.addEventListener(
-        "click",
+        "mouseup",
         () => ([isDrag, currentElement] = drop(isDrag, currentElement))
       );
       document.addEventListener("keydown", (activeKey) => {
@@ -70,9 +70,9 @@ function drag(e, isDrag, currentElement) {
   }
 }
 
-function drop(isDrag, currentElement) {
+function dropi(isDrag, currentElement) {
   if (isDrag) {
-    currentElement.style.backgroundColor = "red";
+    currentElement.style.backgroundColor = "";
     currentElement = null;
     isDrag = false;
   }
@@ -81,7 +81,7 @@ function drop(isDrag, currentElement) {
 
 function drop(startTop, startLeft, isDrag, currentElement) {
   if (isDrag) {
-    currentElement.style.backgroundColor = "red";
+    currentElement.style.backgroundColor = "";
     currentElement.style.top = startTop + "px";
     currentElement.style.left = startLeft + "px";
     currentElement = null;
