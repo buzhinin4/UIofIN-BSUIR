@@ -1,0 +1,106 @@
+$colors-palette: (
+  --orange: #fec994,
+  --light-orange: #fed9c9,
+  --light-red: #ffefd8,
+  --dark-grey: #808080,
+  --grey: #dedede,
+  --light-grey: #ebebeb,
+);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#paint {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.tools {
+  border: 1px solid map-get($map: $colors-palette, $key: --orange);
+  background-color: map-get($map: $colors-palette, $key: --light-red);
+}
+
+.tools__title {
+  margin: 10px 10px;
+}
+
+.tools__choosing {
+  margin: 20px 20px;
+}
+
+.tools__choosing-legend::after {
+  content: ":";
+}
+
+.tools__fill-color-input {
+  margin: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+.tools__stroke-color-input {
+  margin: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+.tools__clear-button {
+  margin: 5px 0 0 5px;
+  padding: 5px 0px;
+  text-align: center;
+  width: calc(100% - 10px);
+  border: none;
+  background-color: map-get($map: $colors-palette, $key: --orange);
+  cursor: pointer;
+  transition: all ease 0.3s;
+
+  &:hover {
+    box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.3);
+  }
+
+  &:active {
+    box-shadow: inset -2px -2px 2px 2px rgba($color: #000000, $alpha: 0.3);
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-group__element {
+  margin: 5px 0 0 5px;
+}
+
+.radio-group__element-radio {
+  cursor: pointer;
+}
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  border: 1px solid map-get($map: $colors-palette, $key: --orange);
+}
+
+.workspace__title {
+  padding: 10px 10px;
+  background-color: map-get($map: $colors-palette, $key: --light-red);
+  border: 2px solid map-get($map: $colors-palette, $key: --orange);
+}
+
+.workspace__svg {
+  width: 100%;
+  height: 100%;
+  border: 2px solid map-get($map: $colors-palette, $key: --orange);
+  flex: 1;
+  cursor: pointer;
+}
