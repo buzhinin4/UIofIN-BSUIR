@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!(touchY2 && touchX2)) {
         if (startTouchY === touchY && startTouchX === touchX) {
           if (isFollow) {
-            [isFollow, currentElement] = drop(isFollow, currentElement);
+            [isFollow, currentElement] = dropi(isFollow, currentElement);
             console.log("im end follow");
           } else {
             isFollow = true;
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } else if (!isFollow) {
           console.log("im drop");
-          [isDrag, currentElement] = drop(isDrag, currentElement);
+          [isDrag, currentElement] = dropi(isDrag, currentElement);
         }
 
         startTouchY = startTouchX = touchY = touchX = null;
@@ -102,7 +102,7 @@ function drag(touchY, touchX, isDrag, currentElement) {
   }
 }
 
-function drop(isDrag, currentElement) {
+function dropi(isDrag, currentElement) {
   if (isDrag) {
     currentElement = null;
     isDrag = false;

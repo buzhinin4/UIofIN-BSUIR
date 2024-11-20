@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab 7</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <section id="paint">
+      <div class="tools">
+        <h2 class="tools__title">Tools</h2>
+        <div class="tools__choosing radio-group">
+          <p class="tools__choosing-legend">Choose type of figure</p>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-figure radio-group__element-radio"
+              type="radio"
+              name="figures-list"
+              value="line"
+              checked
+            />
+            <label class="radio-group__element-label" for="line">Line</label>
+          </div>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-figure radio-group__element-radio"
+              type="radio"
+              name="figures-list"
+              value="ellipse"
+            />
+            <label class="radio-group__element-label" for="ellipse"
+              >Ellipse</label
+            >
+          </div>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-figure radio-group__element-radio"
+              type="radio"
+              name="figures-list"
+              value="circle"
+            />
+            <label class="radio-group__element-label" for="circle"
+              >Circle</label
+            >
+          </div>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-figure radio-group__element-radio"
+              type="radio"
+              name="figures-list"
+              value="rectangle"
+            />
+            <label class="radio-group__element-label" for="rectangle"
+              >Rectangle</label
+            >
+          </div>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-figure radio-group__element-radio"
+              type="radio"
+              name="figures-list"
+              value="square"
+            />
+            <label class="radio-group__element-label" for="square"
+              >Square</label
+            >
+          </div>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-figure radio-group__element-radio"
+              type="radio"
+              name="figures-list"
+              value="polygon"
+            />
+            <label class="radio-group__element-label" for="polygon"
+              >Polygon</label
+            >
+            <select class="polygon-angles-list" name="polygon-angles-list">
+              <option class="polygon-angles-list__element" value="3">3</option>
+              <option class="polygon-angles-list__element" value="4" selected>
+                4
+              </option>
+              <option class="polygon-angles-list__element" value="5">5</option>
+              <option class="polygon-angles-list__element" value="6">6</option>
+              <option class="polygon-angles-list__element" value="7">7</option>
+              <option class="polygon-angles-list__element" value="8">8</option>
+              <option class="polygon-angles-list__element" value="9">9</option>
+              <option class="polygon-angles-list__element" value="10">
+                10
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="tools__choosing">
+          <p class="tools__choosing-legend">Choose a fill color</p>
+          <input class="tools__fill-color-input" type="color" value="#000000" />
+        </div>
+        <div class="tools__choosing radio-group">
+          <p class="tools__choosing-legend">Choose type of fill</p>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-fill radio-group__element-radio"
+              type="radio"
+              name="fill-list"
+              value="fill"
+              checked
+            />
+            <label class="radio-group__element-label" for="fill"
+              >With fill</label
+            >
+          </div>
+          <div class="radio-group__element">
+            <input
+              class="tools__choosing-fill radio-group__element-radio"
+              type="radio"
+              name="fill-list"
+              value="no-fill"
+            />
+            <label class="radio-group__element-label" for="no-fill"
+              >Without fill</label
+            >
+          </div>
+        </div>
+        <div class="tools__choosing">
+          <p class="tools__choosing-legend">Choose a stroke color</p>
+          <input
+            class="tools__stroke-color-input"
+            type="color"
+            value="#000000"
+          />
+        </div>
+        <div class="tools__choosing">
+          <p class="tools__choosing-legend">Clear workspace</p>
+          <button class="tools__clear-button">Clear</button>
+        </div>
+      </div>
+      <div class="workspace">
+        <h2 class="workspace__title">Workspace</h2>
+        <svg class="workspace__svg"></svg>
+      </div>
+    </section>
+  </body>
+</html>
