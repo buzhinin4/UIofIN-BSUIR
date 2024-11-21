@@ -4,8 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentElement = null;
   let startTop = 0;
   let startLeft = 0;
+  let startHeight = 0;
+  let startWidth = 0;
   let isDragging = false;
   let isFollowing = false;
+  let touchStartTime = 0;
 
   let startTouchY1, startTouchX1, startTouchY2, startTouchX2;
   let touchY1, touchX1, touchY2, touchX2;
@@ -16,13 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const touch = start.touches[0];
     const target = start.target;
 
-    // Проверка, является ли целевой элемент "интересным"
     if (Array.from(targetElements).includes(target)) {
+      touchStartTime = Date.now();
+
       if (start.touches.length === 1) {
         isDragging = true;
         currentElement = target;
         startTop = currentElement.offsetTop;
         startLeft = currentElement.offsetLeft;
+        startHeight = currentElement.offsetHeight;
+        startWidth = currentElement.offsetWidth;
         startTouchY1 = touchY1 = touch.clientY;
         startTouchX1 = touchX1 = touch.clientX;
       } else if (start.touches.length === 2) {
@@ -43,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const touch = move.touches[0];
       touchY1 = touch.clientY;
       touchX1 = touch.clientX;
-      currentElement.style.top = `${startTop + (touchY1 - startTouchY1)}px`;
-      currentElement.style.left = `${startLeft + (touchX1 - startTouchX1)}px`;
+      currentElement.style.top = `${touchY1}px`;
+      currentElement.style.left = `${touchX1}px`;
     } else if (move.touches.length === 2) {
       const touch1 = move.touches[0];
       const touch2 = move.touches[1];
@@ -65,28 +71,29 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("touchend", (end) => {
     if (!currentElement) return;
 
+    const touchDuration = Date.now() - touchStartTime;
+
     if (end.touches.length === 0) {
-      if (startTouchX1 == touchX1 && startTouchY1 == touchY1) {
-        if (isFollowing) {
-          isFollowing = false;
-          currentElement = null;
-        } else {
-          isFollowing = true;
-        }
-      }
       if (isDragging && !isFollowing) {
         currentElement = null;
       }
-      if (isDragging) isDragging = false;
+      if (isFollowing) {
+        currentElement = null;
+        isFollowing = false;
+      } else {
+        isFollowing = true;
+      }
+      isDragging = false;
       startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
     } else if (end.touches.length === 1) {
       if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
-        isDragging = false;
-        isFollowing = false;
-        currentElement.style.top = `${startTop}px`;
-        currentElement.style.left = `${startLeft}px`;
-        currentElement = null;
-        startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
+        if (touchDuration < 300) {
+          currentElement.style.top = `${startTop}px`;
+          currentElement.style.left = `${startLeft}px`;
+          currentElement.style.height = `${startHeight}px`;
+          currentElement.style.width = `${startWidth}px`;
+          currentElement = null;
+        }
       }
       startTouchY2 = startTouchX2 = null;
     }
