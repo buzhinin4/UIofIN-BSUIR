@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentElement = element;
         startTop = currentElement.offsetTop;
         startLeft = currentElement.offsetLeft;
+        console.log(`my startTop ${startTop}`);
         startTouchY1 = touchY1 = touch.clientY;
         startTouchX1 = touchX1 = touch.clientX;
       } else if (start.touches.length === 2) {
@@ -83,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
           isDragging = false;
           isFollowing = false;
-          currentElement = null;
           currentElement.style.top = `${startTop}px`;
           currentElement.style.left = `${startLeft}px`;
+          currentElement = null;
           startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
         }
         startTouchY2 = startTouchX2 = null;
