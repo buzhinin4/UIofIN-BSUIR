@@ -86,14 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
       isDragging = false;
       startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
     } else if (end.touches.length === 1) {
-      if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
-        if (touchDuration < 300) {
-          currentElement.style.top = `${startTop}px`;
-          currentElement.style.left = `${startLeft}px`;
-          currentElement.style.height = `${startHeight}px`;
-          currentElement.style.width = `${startWidth}px`;
-          currentElement = null;
-        }
+      if (touchDuration < 300) {
+        currentElement.style.top = `${startTop}px`;
+        currentElement.style.left = `${startLeft}px`;
+        currentElement.style.height = `${startHeight}px`;
+        currentElement.style.width = `${startWidth}px`;
+        currentElement = null;
       }
       startTouchY2 = startTouchX2 = null;
     }
