@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
       } else if (end.touches.length === 1) {
         if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
+          alert("im stop");
           isDragging = false;
           isFollowing = false;
           currentElement.style.top = `${startTop}px`;
