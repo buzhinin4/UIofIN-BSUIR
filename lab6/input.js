@@ -31,14 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
         startWidth = currentElement.offsetWidth;
         startTouchY1 = touchY1 = touch.clientY;
         startTouchX1 = touchX1 = touch.clientX;
-      } else if (start.touches.length === 2) {
-        const touch1 = start.touches[0];
-        const touch2 = start.touches[1];
-        startTouchY1 = touchY1 = touch1.clientY;
-        startTouchX1 = touchX1 = touch1.clientX;
-        startTouchY2 = touchY2 = touch2.clientY;
-        startTouchX2 = touchX2 = touch2.clientX;
       }
+    }
+    if (start.touches.length === 2) {
+      const touch1 = start.touches[0];
+      const touch2 = start.touches[1];
+      startTouchY1 = touchY1 = touch1.clientY;
+      startTouchX1 = touchX1 = touch1.clientX;
+      startTouchY2 = touchY2 = touch2.clientY;
+      startTouchX2 = touchX2 = touch2.clientX;
     }
   });
 
