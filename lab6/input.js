@@ -36,12 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("touchmove", (move) => {
       if (!currentElement) return;
 
-      if (move.touches.length === 1 && isDragging) {
+      if (move.touches.length === 1 && (isDragging || isFollowing)) {
         const touch = move.touches[0];
         touchY1 = touch.clientY;
         touchX1 = touch.clientX;
-        currentElement.style.top = `${startTop + (touchY1 - startTouchY1)}px`;
-        currentElement.style.left = `${startLeft + (touchX1 - startTouchX1)}px`;
+        currentElement.style.top = `${touchY1}px`;
+        currentElement.style.left = `${touchX1}px`;
       } else if (move.touches.length === 2) {
         const touch1 = move.touches[0];
         const touch2 = move.touches[1];
@@ -63,15 +63,28 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!currentElement) return;
 
       if (end.touches.length === 0) {
-        if (isFollowing) {
-          currentElement = null;
-          isFollowing = false;
-        } else {
-          isFollowing = true;
+        if (startTouchX1 == touchX1 && startTouchY1 == touchY1) {
+          if (isFollowing) {
+            isFollowing = false;
+            currentElement = null;
+          } else {
+            isFollowing = true;
+          }
         }
-        isDragging = false;
+        if (isDragging) {
+          isDragging = false;
+          currentElement = null;
+        }
         startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
       } else if (end.touches.length === 1) {
+        if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
+          isDragging = false;
+          isFollowing = false;
+          currentElement = null;
+          currentElement.style.top = `${startTop}px`;
+          currentElement.style.left = `${startLeft}px`;
+          startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
+        }
         startTouchY2 = startTouchX2 = null;
       }
     });
