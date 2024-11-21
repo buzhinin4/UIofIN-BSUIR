@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (Array.from(targetElements).includes(target)) {
       touchStartTime = Date.now();
-
       if (start.touches.length === 1) {
         isDragging = true;
         currentElement = target;
@@ -33,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         startTouchX1 = touchX1 = touch.clientX;
       }
     }
+
     if (start.touches.length === 2) {
       const touch1 = start.touches[0];
       const touch2 = start.touches[1];
@@ -75,14 +75,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const touchDuration = Date.now() - touchStartTime;
 
     if (end.touches.length === 0) {
+      if (startTouchY1 === touchY1 && startTouchX1 === touchX1) {
+        if (isFollowing) {
+          currentElement = null;
+          isFollowing = false;
+        } else {
+          isFollowing = true;
+        }
+      }
       if (isDragging && !isFollowing) {
         currentElement = null;
-      }
-      if (isFollowing) {
-        currentElement = null;
-        isFollowing = false;
-      } else {
-        isFollowing = true;
       }
       isDragging = false;
       startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
