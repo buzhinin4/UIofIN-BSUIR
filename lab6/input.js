@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!currentElement) return;
 
       if (move.touches.length === 1 && (isDragging || isFollowing)) {
+        console.log("im here");
+
         const touch = move.touches[0];
         touchY1 = touch.clientY;
         touchX1 = touch.clientX;
@@ -69,12 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
             currentElement = null;
           } else {
             isFollowing = true;
+            console.log("im following");
           }
         }
-        if (isDragging) {
-          isDragging = false;
+        if (isDragging && !isFollowing) {
           currentElement = null;
         }
+        if (isDragging) isDragging = false;
         startTouchY1 = startTouchX1 = startTouchY2 = startTouchX2 = null;
       } else if (end.touches.length === 1) {
         if (startTouchY2 === touchY2 && startTouchX2 === touchX2) {
