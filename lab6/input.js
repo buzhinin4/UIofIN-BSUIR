@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (start.touches.length === 2) {
-      alert("start 2");
       const touch1 = start.touches[0];
       const touch2 = start.touches[1];
       startTouchY1 = touchY1 = touch1.clientY;
