@@ -1,11 +1,4 @@
-$colors-palette: (
-  --orange: #fec994,
-  --light-orange: #fed9c9,
-  --light-red: #ffefd8,
-  --dark-grey: #808080,
-  --grey: #dedede,
-  --light-grey: #ebebeb,
-);
+//!load
 
 * {
   box-sizing: border-box;
@@ -25,8 +18,8 @@ body {
 }
 
 .tools {
-  border: 1px solid map-get($map: $colors-palette, $key: --orange);
-  background-color: map-get($map: $colors-palette, $key: --light-red);
+  border: 1px solid #fec994;
+  background-color: #ffefd8;
 }
 
 .tools__title {
@@ -57,17 +50,17 @@ body {
   text-align: center;
   width: calc(100% - 10px);
   border: none;
-  background-color: map-get($map: $colors-palette, $key: --orange);
+  background-color: #fec994;
   cursor: pointer;
   transition: all ease 0.3s;
+}
 
-  &:hover {
-    box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.3);
-  }
+.tools__clear-button:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
 
-  &:active {
-    box-shadow: inset -2px -2px 2px 2px rgba($color: #000000, $alpha: 0.3);
-  }
+.tools__clear-button:active {
+  box-shadow: inset -2px -2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .radio-group {
@@ -88,19 +81,21 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  border: 1px solid map-get($map: $colors-palette, $key: --orange);
+  border: 1px solid #fec994;
 }
 
 .workspace__title {
   padding: 10px 10px;
-  background-color: map-get($map: $colors-palette, $key: --light-red);
-  border: 2px solid map-get($map: $colors-palette, $key: --orange);
+  background-color: #ffefd8;
+  border: 2px solid #fec994;
 }
 
 .workspace__svg {
   width: 100%;
   height: 100%;
-  border: 2px solid map-get($map: $colors-palette, $key: --orange);
+  border: 2px solid #fec994;
   flex: 1;
   cursor: pointer;
 }
+
+/*# sourceMappingURL=styles.scss.map */

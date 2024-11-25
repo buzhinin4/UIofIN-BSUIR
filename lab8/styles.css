@@ -52,9 +52,11 @@ body {
   cursor: pointer;
   transition: all ease 0.3s;
 }
+
 .tools__clear-button:hover {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
 .tools__clear-button:active {
   box-shadow: inset -2px -2px 2px 2px rgba(0, 0, 0, 0.3);
 }
